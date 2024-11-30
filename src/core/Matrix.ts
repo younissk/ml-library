@@ -13,8 +13,8 @@ export class Matrix {
 
   add(matrix: Matrix): Matrix {
     if (
-      this.data.length !== matrix.data.length ||
-      this.data[0].length !== matrix.data[0].length
+      this.dimensions[0] !== matrix.dimensions[0] ||
+      this.dimensions[1] !== matrix.dimensions[1]
     ) {
       throw new Error("Matrices must have the same dimensions for addition.");
     }
@@ -29,8 +29,8 @@ export class Matrix {
 
   subtract(matrix: Matrix): Matrix {
     if (
-      this.data.length !== matrix.data.length ||
-      this.data[0].length !== matrix.data[0].length
+      this.dimensions[0] !== matrix.dimensions[0] ||
+      this.dimensions[1] !== matrix.dimensions[1]
     ) {
       throw new Error(
         "Matrices must have the same dimensions for subtraction.",
@@ -98,7 +98,6 @@ export class Matrix {
   }
 
   prettyPrint(): string {
-    // Determine the maximum width of each column
     const colWidths = Array(this.columns).fill(0);
     for (let j = 0; j < this.columns; j++) {
       colWidths[j] = Math.max(
