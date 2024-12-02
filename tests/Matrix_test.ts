@@ -68,26 +68,3 @@ Deno.test("Matrix Dot", () => {
 
   assertEquals(A.dot(B), expectedDotProductOutput);
 });
-
-Deno.test("Matrix Transpose", () => {
-  const A_transpose = new Matrix([
-    [1, 4, 7],
-    [2, 5, 8],
-    [3, 6, 9],
-  ]);
-
-  const B_transpose = new Matrix([
-    [9, 6, 3],
-    [8, 5, 2],
-    [7, 4, 1],
-  ]);
-
-  assertEquals(A.transpose(), A_transpose);
-  assertEquals(B.transpose(), B_transpose);
-});
-
-Deno.test("Matrix Determinant", () => {
-  const expectedDeterminantOutput = 0;
-
-  assertEquals(A.determinant(), expectedDeterminantOutput);
-});

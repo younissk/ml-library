@@ -61,42 +61,6 @@ export class Matrix {
     return new Matrix(result);
   }
 
-  transpose(): Matrix {
-    const transposedData = this.data[0].map((_, colIndex) =>
-      this.data.map((row) => row[colIndex]),
-    );
-    return new Matrix(transposedData);
-  }
-
-  determinant(): number {
-    if (this.rows !== this.columns) {
-      throw new Error(
-        "Determinant can only be calculated for square matrices.",
-      );
-    }
-
-    const calculateDet = (matrix: number[][]): number => {
-      const n = matrix.length;
-
-      // Base case for 2x2 matrix
-      if (n === 2) {
-        return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-      }
-
-      // Recursive case for larger matrices
-      let det = 0;
-      for (let col = 0; col < n; col++) {
-        const minor = matrix
-          .slice(1)
-          .map((row) => row.filter((_, index) => index !== col));
-        det += matrix[0][col] * calculateDet(minor) * (col % 2 === 0 ? 1 : -1);
-      }
-      return det;
-    };
-
-    return calculateDet(this.data);
-  }
-
   prettyPrint(): string {
     const colWidths = Array(this.columns).fill(0);
     for (let j = 0; j < this.columns; j++) {
