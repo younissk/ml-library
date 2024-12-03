@@ -1,4 +1,4 @@
-import { Matrix } from "../src/core/Matrix.ts";
+import Matrix from "../../src/math/Matrix.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 const A = new Matrix([

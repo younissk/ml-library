@@ -1,8 +1,8 @@
-export class Matrix {
+export default class Matrix {
   public data: number[][];
   public dimensions: [number, number];
-  private columns: number;
-  private rows: number;
+  public columns: number;
+  public rows: number;
 
   constructor(data: number[][]) {
     this.data = data;
@@ -59,6 +59,16 @@ export class Matrix {
     );
 
     return new Matrix(result);
+  }
+
+  flatten(): number[] {
+    let allNumbersInMatrix: number[] = [];
+    for (const row of this.data) {
+      for (const number of row) {
+        allNumbersInMatrix.push(number);
+      }
+    }
+    return allNumbersInMatrix;
   }
 
   prettyPrint(): string {
